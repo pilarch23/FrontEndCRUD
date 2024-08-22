@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>{{titleAction}}Movie -</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formDirector">
+    <mat-grid-list cols="1" rowHeight="80px">
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Director Name</mat-label>
+          <input matInput formControlName="directorName" autocomplete="off">
+        </mat-form-field>
+      </mat-grid-tile> 
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Age</mat-label>
+          <input matInput formControlName="age" autocomplete="off" type="number">
+        </mat-form-field>
+      </mat-grid-tile> 
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Active</mat-label>
+          <mat-select formControlName="active">
+            <mat-option [value]="true">True</mat-option>
+            <mat-option [value]="false">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>    
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+  <button mat-raised-button  color="primary"
+  (click)="addEditDirector()"
+  >
+    {{buttonAction}}
+  </button>
+
+</div>

@@ -1,0 +1,107 @@
+<div style="width: 70%; margin: 40px auto">
+  <h1>Movie List</h1>
+
+  <button mat-raised-button color="primary" (click)="dialogNewMovie()">New Movie</button>
+  <br>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event, 'movies')" placeholder="Ex. ium" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- MovieName Column -->
+      <ng-container matColumnDef="MovieName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.movieName}} </td>
+      </ng-container>
+
+      <!-- Gender Column -->
+      <ng-container matColumnDef="Gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+      </ng-container>
+
+      <!-- Duration Column -->
+      <ng-container matColumnDef="Duration">
+        <th mat-header-cell *matHeaderCellDef> Duration </th>
+        <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+      </ng-container>
+
+      <!-- Director Column -->
+      <ng-container matColumnDef="Director">
+        <th mat-header-cell *matHeaderCellDef> Director </th>
+        <td mat-cell *matCellDef="let element"> {{element.director}} </td>
+      </ng-container>
+
+      <!-- Operations Column -->
+      <ng-container matColumnDef="Operations">
+        <th mat-header-cell *matHeaderCellDef style="width: 80px;"> Operations </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="dialogEditMovie(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="dialogDeleteMovie(element)" color="warn" >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator #moviePaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+  <br><br><br>
+
+  <h1>Director List</h1>
+
+  <button mat-raised-button color="primary" (click)="dialogNewDirector()">New Director</button>
+  <br>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event, 'directors')" placeholder="Ex. ium" #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSourceD">
+      <!-- DirectorName Column -->
+      <ng-container matColumnDef="DirectorName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.directorName}} </td>
+      </ng-container>
+
+      <!-- Age Column -->
+      <ng-container matColumnDef="Age">
+        <th mat-header-cell *matHeaderCellDef> Age </th>
+        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+
+      <!-- Active Column -->
+      <ng-container matColumnDef="Active">
+        <th mat-header-cell *matHeaderCellDef> Active </th>
+        <td mat-cell *matCellDef="let element"> {{element.active}} </td>
+      </ng-container>
+
+      <!-- Operations Column -->
+      <ng-container matColumnDef="Operations">
+        <th mat-header-cell *matHeaderCellDef style="width: 80px;"> Operations </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="dialogEditDirector(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="dialogDeleteDirector(element)" color="warn" >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsD"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsD;"></tr>
+    </table>
+
+    <mat-paginator #directorPaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

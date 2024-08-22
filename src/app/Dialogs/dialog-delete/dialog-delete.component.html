@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>DeleteMovie</h1>
+<div mat-dialog-content>
+    Are you sure to delete the movie "{{dataMovie.movieName}}"?
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+  <button mat-raised-button  color="primary"
+  (click)="confirm_Delete()"
+  cdkFocusInitial>   
+   Delete
+  </button>
+</div>
